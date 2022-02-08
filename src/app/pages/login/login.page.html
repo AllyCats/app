@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AllyCat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="userForm" padding-right (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">Email/Username</ion-label>
+      <ion-input type="text" formControlName="email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+    </ion-item>
+
+    <ion-button 
+      color="primary" 
+      expand="block" 
+      [disabled]="!userForm.valid" 
+      (click)="login()">Login</ion-button>
+	</form>
+	<ion-card *ngIf="errorMessage != ''" color="danger">
+		<ion-card-content>
+			{{ errorMessage }}
+		</ion-card-content>
+	</ion-card>
+</ion-content>

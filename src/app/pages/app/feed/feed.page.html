@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Feed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="loaded">
+	<ion-list *ngFor="let item of items">
+		<ion-item>
+			<ion-avatar slot="start">
+				<img *ngIf="item.user.avatar !== ''" src="{{ item.user.avater }}">
+				<ion-icon style="font-size: 2.5em;" *ngIf="item.user.avatar == ''" name="person-circle-outline"></ion-icon>
+			</ion-avatar>
+			<ion-label>
+				<h3>
+					<a [routerLink]="['/app/users',item.user.uuid]">
+						{{ item.user.nickName }}
+					</a>
+				</h3>
+				<p>
+					<a [routerLink]="item.link">
+						{{ item.content }}
+					</a>
+				</p>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-content *ngIf="!loaded">
+	<ion-list *ngFor="let sample of sampleData">
+		<ion-item>
+			<ion-avatar slot="start">
+				<ion-icon class="empty empty-avatar"></ion-icon>
+			</ion-avatar>
+			<ion-label>
+				<h3 class="empty empty-text" style="width:25%">
+					&nbsp;
+				</h3>
+				<div class="empty empty-text" style="width:75%">
+					&nbsp;
+				</div>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>

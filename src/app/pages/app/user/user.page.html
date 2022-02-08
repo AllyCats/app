@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="loaded">
+	<ion-item>
+		<ion-avatar slot="start">
+			<img *ngIf="user.avatar !== ''" src="{{ user.avater }}">
+			<ion-icon style="font-size: 2.5em;" *ngIf="user.avatar == ''" name="person-circle-outline"></ion-icon>
+		</ion-avatar>
+		<ion-label>
+			<h2>
+					{{ user.nickName }}
+			</h2>
+			<p>
+				Member since: {{ user.created | date: 'mediumDate'}}
+			</p>
+		</ion-label>
+	</ion-item>
+		
+</ion-content>
+
+<ion-content *ngIf="!loaded">
+	<ion-item>
+		<ion-avatar slot="start">
+			<ion-icon class="empty empty-avatar"></ion-icon>
+		</ion-avatar>
+		<ion-label>
+			<h2 class="empty empty-text" style="width:25%">
+				&nbsp;
+			</h2>
+		</ion-label>
+	</ion-item>
+	
+</ion-content>

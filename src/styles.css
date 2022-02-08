@@ -1,0 +1,26 @@
+.empty{
+	background-color: rgb(187, 187, 187);
+	animation-name: color;
+	animation-duration: .75s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	animation-timing-function: ease;
+}
+.empty-avatar{
+  border-radius: 50%;
+	height:40px;
+	width:40px;
+}
+
+.empty-text{
+  border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+@keyframes color {
+  to {
+    background-color: rgb(94, 94, 94);;
+    }
+}
